@@ -1,0 +1,45 @@
+﻿@model ListViewModel
+@{
+    ViewData["Title"] = "List Books";
+}
+<link href="~/lib/datatables/datatables.min.css" rel="stylesheet" />
+
+
+<h5 class="my-3">Sales Orders (@Model.Books.Count())</h5>
+
+
+<table id="orders-table" class="table">
+    <thead>
+        <tr>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Authors</th>
+            <th>Genres</th>
+            <th>Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model.Books)
+        {
+                <tr>
+                    <td>@book.ISBN</td>
+                    <td>@book.Title</td>
+                    <td>@book.Authors</td>
+                    <td>@book.Genres</td>
+                    <td>@book.Year</td>
+                </tr>
+
+        }
+    </tbody>
+</table>
+
+
+@section Scripts{
+    <script src="~/lib/datatables/datatables.min.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function () {
+            $('#orders-table').DataTable();
+        });</script>
+
+
+}
+
